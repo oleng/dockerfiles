@@ -31,7 +31,8 @@ RUN groupadd -r -g 999 redis && useradd -r -g redis -u 999 redis \
 	&& gosu nobody true \
 	&& mkdir /data \
 	&& chown redis:redis /data \
-	&& pip install -v redis
+	&& pip install -v redis \
+    && pip install -v hiredis
 
 
 #--> final image
