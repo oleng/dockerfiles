@@ -1,0 +1,2 @@
+see https://stackoverflow.com/a/47871121 on packages for building pg_config
+based partly on dencold/pgcli-docker & pygmy/alpine-tini:3.7

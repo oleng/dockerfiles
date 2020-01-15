@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 #
 # Simple wrapper for the pgli tool. This script allows us to pull in linked
 # docker containers if the user decides to bring up the cli that way.
