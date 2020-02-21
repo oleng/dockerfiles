@@ -5,7 +5,7 @@ Based on [sphinxdoc/sphinx:latest](https://github.com/drillan/sphinx-docker/blob
 Added
 - libyaml
 
-The following Python packages were installed for generating [Ansible's docsite `.html` files from 2.9 source](https://github.com/ansible/ansible/tree/stable-2.9) locally:
+The following Python packages were installed for generating [`.html` files from Ansible 2.9 documentation site source](https://github.com/ansible/ansible/tree/stable-2.9) locally:
 
 - jinja2
 - Pygments
