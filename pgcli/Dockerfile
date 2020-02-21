@@ -19,7 +19,8 @@ RUN set -ex \
         "pgspecial>=1.11" \
         "six>=1.13" \
         "sqlparse>=0.3" \
-    && apk --purge del .build-deps
+    && apk --purge del .build-deps \
+    && apk --purge del --no-network .fetch-deps
 
 FROM base
 ADD docker-entrypoint.sh /bin/docker-entrypoint.sh
