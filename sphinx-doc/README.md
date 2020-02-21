@@ -5,7 +5,7 @@ Based on [sphinxdoc/sphinx:latest](https://github.com/drillan/sphinx-docker/blob
 Added
 - libyaml
 
-Python packages:
+The following Python packages were installed for generating [Ansible's docsite `.html` files from 2.9 source](https://github.com/ansible/ansible/tree/stable-2.9) locally:
 
 - jinja2
 - Pygments
@@ -17,6 +17,12 @@ Python packages:
 - sphinx-notfound-page
 - straight.plugin
 
-are installed for generating [ansible's docsite files](https://github.com/ansible/ansible/tree/stable-2.9)
 
-For usage: https://www.sphinx-doc.org/en/master/usage/quickstart.html#running-the-build
+```
+git clone -b stable-2.9 git@github.com:ansible/ansible.git
+cd ansible/docs/docsite
+mkdir html
+docker --rm -v $(PWD):/docs oleng/sphinx-doc sphinx-build --color -av rst/ html/
+```
+
+For more sphinx usage instructions: https://www.sphinx-doc.org/en/master/usage/quickstart.html#running-the-build
