@@ -31,16 +31,12 @@ RUN groupadd -r -g 999 redis && useradd -r -g redis -u 999 redis \
 	&& gosu nobody true \
 	&& mkdir /data \
 	&& chown redis:redis /data \
-	&& pip install -v --no-cache-dir redis \
-    && pip install -v --no-cache-dir hiredis
+	&& pip install --verbose --no-cache-dir redis \
+    && pip install --verbose --no-cache-dir hiredis
 
-
-#--> final image
-FROM base
-
-ENTRYPOINT ["docker-entrypoint.sh"]
 VOLUME /data
 WORKDIR /data
+ENTRYPOINT ["docker-entrypoint.sh"]
 EXPOSE 6379
 
 CMD ["redis-server"]
