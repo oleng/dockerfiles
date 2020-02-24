@@ -1,5 +1,7 @@
 FROM python:3.8.1-alpine3.11 AS base
 
+ADD docker-entrypoint.sh /bin/docker-entrypoint.sh
+
 RUN set -ex \
     && apk add --no-cache --virtual .fetch-deps \
         postgresql-libs \
@@ -20,11 +22,7 @@ RUN set -ex \
         "six>=1.13" \
         "sqlparse>=0.3" \
     && apk --purge del .build-deps \
-    && apk --purge del --no-network .fetch-deps
-
-FROM base
-ADD docker-entrypoint.sh /bin/docker-entrypoint.sh
-RUN set -ex \
+    && apk --purge del --no-network .fetch-deps \
     && addgroup -g 1000 -S postgres \
     && adduser -u 1000 -S postgres -G postgres \
     && chown -R postgres:postgres /bin/docker-entrypoint.sh \
@@ -39,6 +37,9 @@ RUN set -ex \
         "Click>=7" \
         "configobj>=5" \
         "prompt_toolkit>=3" \
-        "pgcli>=2"
+        "pgcli>=2" \
+    && pip list \
+    && rm -rf ~/.cache/pip \
+    && rm -rf /tmp/*
 
 ENTRYPOINT ["docker-entrypoint.sh"]
